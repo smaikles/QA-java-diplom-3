@@ -10,7 +10,7 @@ import static org.apache.http.HttpStatus.SC_OK;
 import static org.junit.Assert.assertTrue;
 
 
-public class TestUserSignIn extends StandartTest {
+public class TestUserSignIn {
 
     private UserClient userClient;
     private UserModel user;
@@ -32,9 +32,9 @@ public class TestUserSignIn extends StandartTest {
 
     @After
     public void teardown() {
-
         userClient.delete(user.getEmail(), bearerToken);
     }
+
 
     @Test
     @DisplayName("Проверь: вход по кнопке «Войти в аккаунт» на главной - Успешно")
@@ -43,7 +43,6 @@ public class TestUserSignIn extends StandartTest {
                 .clickLoginButton()
                 .userLogin(user)
                 .isOrderButtonDisplayed();
-
         assertTrue(orderButtonDisplayed);
     }
 
@@ -54,7 +53,6 @@ public class TestUserSignIn extends StandartTest {
                 .clickProfileLink()
                 .userLogin(user)
                 .isOrderButtonDisplayed();
-
         assertTrue(orderButtonDisplayed);
     }
 
@@ -66,7 +64,6 @@ public class TestUserSignIn extends StandartTest {
                 .clickLoginLink()
                 .userLogin(user)
                 .isOrderButtonDisplayed();
-
         assertTrue(orderButtonDisplayed);
     }
 
@@ -77,7 +74,6 @@ public class TestUserSignIn extends StandartTest {
                 .clickLoginLink()
                 .userLogin(user)
                 .isOrderButtonDisplayed();
-
         assertTrue(orderButtonDisplayed);
     }
 }

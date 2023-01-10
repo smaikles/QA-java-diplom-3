@@ -27,31 +27,31 @@ public class LoginPage {
         return Selenide.page(RegisterPage.class);
     }
 
-    @Step("Нажать сбросить пароль")
+    @Step("Нажать кнопку сбросить пароль")
     public ForgotPasswordPage clickRestorePasswordLink() {
         restorePasswordLink.click();
         return Selenide.page(ForgotPasswordPage.class);
     }
 
-    @Step("Нажать Войти")
+    @Step("Нажать кнопку Войти")
     public MainPage clickLoginButton() {
         loginButton.click();
         return Selenide.page(MainPage.class);
     }
 
-    @Step("Заполнить Email")
+    @Step("Заполнить поле Email")
     public LoginPage inputEmail(String email) {
         emailInputField.sendKeys(email);
         return this;
     }
 
-    @Step("Заполнить пароль")
+    @Step("Заполнить поле пароль")
     public LoginPage inputPassword(String password) {
         passwordInputField.sendKeys(password);
         return this;
     }
 
-    @Step("Заполнить Email и пароль, нажать кнопку Войти")
+    @Step("Заполнить поля Email и пароль, нажать кнопку Войти")
     public MainPage userLogin(UserModel user) {
         inputEmail(user.getEmail());
         inputPassword(user.getPassword());

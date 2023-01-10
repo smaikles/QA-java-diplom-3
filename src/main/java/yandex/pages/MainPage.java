@@ -19,7 +19,7 @@ public class MainPage {
     private SelenideElement bunsTab= $(By.xpath("//span[text()='Булки']//parent::div"));
     private SelenideElement saucesTab= $(By.xpath("//span[text()='Соусы']//parent::div"));
     private SelenideElement fillingsTab= $(By.xpath("//span[text()='Начинки']//parent::div"));
-  //  private SelenideElement ingredientsScrollDown= $(By.name("BurgerIngredients_ingredients__list__2A-mT"));
+    private SelenideElement ingredientsScrollDown= $(By.name("BurgerIngredients_ingredients__list__2A-mT"));
 
     @Step("Нажать кнопку Войти")
     public LoginPage clickLoginButton() {
@@ -50,7 +50,6 @@ public class MainPage {
     public boolean isCreateBurgerTextDisplayed() {
         return createBurgerText.shouldBe(visible).isDisplayed();
     }
-
     public MainPage displayAvailableBuns() {
         bunsTab.click();
         Selenide.sleep(3000);

@@ -37,7 +37,6 @@ public class UserClient extends RestClient {
                 .delete(DELETE)
                 .then().log().all()
                 .assertThat()
-            //    .statusCode(202);
                 .statusCode(SC_ACCEPTED);
     }
 }

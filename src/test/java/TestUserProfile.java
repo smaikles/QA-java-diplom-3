@@ -10,7 +10,7 @@ import static org.apache.http.HttpStatus.SC_OK;
 import static org.junit.Assert.assertTrue;
 
 
-public class TestUserProfile extends StandartTest {
+public class TestUserProfile {
 
     private UserClient userClient;
     private UserModel userModel;

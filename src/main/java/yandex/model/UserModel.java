@@ -49,7 +49,6 @@ public class UserModel {
         Faker faker = new Faker();
         String email = faker.internet().emailAddress();
         String name = faker.name().fullName();
-      //  String password = RandomStringUtils.randomAlphabetic(10);
         String password = RandomStringUtils.random(10, true, true);
 
         return new UserModel(email, name, password);

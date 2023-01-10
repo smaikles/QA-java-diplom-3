@@ -14,17 +14,12 @@ public class RegisterPage {
 
     final public static String URL = MainPage.URL + "register";
 
-    // локатор поля для ввода имени
+
     private SelenideElement nameInputField = $(By.xpath("//label[text()='Имя']//following-sibling::input"));
-    // локатор поля для ввода email
     private SelenideElement emailInputField = $(By.xpath("//label[text()='Email']//following-sibling::input"));
-    // локатор поля для ввода пароля
     private SelenideElement passwordInputField = $(By.xpath("//input[@type='password']"));
-    // локатор кнопки <зарегистрироваться>
     private SelenideElement registerButton = $(By.xpath("//button[text()='Зарегистрироваться']"));
-    // локатор текстового элемента <Некорректный пароль>
     private SelenideElement incorrectPasswordWarning = $(By.xpath("//p[text()='Некорректный пароль']"));
-    // локатор ссылки <Войти>
     private SelenideElement loginLink = $(By.xpath("//a[text()='Войти']"));
 
 
@@ -36,7 +31,7 @@ public class RegisterPage {
     }
 
     // метод заполнения поля ввода email
-    @Step("Заполнить поле Имейл")
+    @Step("Заполнить поле Email")
     public RegisterPage inputEmail(String email) {
         emailInputField.sendKeys(email);
         return this;
@@ -57,7 +52,6 @@ public class RegisterPage {
     }
 
     // метод регистрации нового пользователя
-
     @Step("Заполнить форму регистрации")
     public LoginPage registerNewUser(UserModel user) {
         inputName(user.getName());
