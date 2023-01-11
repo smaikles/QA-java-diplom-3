@@ -1,13 +1,16 @@
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import yandex.config.Init;
 import yandex.model.*;
 import yandex.pages.*;
 
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.junit.Assert.assertTrue;
+import static yandex.config.Init.setSettings;
 
 
 public class TestUserProfile {
@@ -18,6 +21,8 @@ public class TestUserProfile {
 
     @Before
     public void setUp() {
+        setSettings();
+        Selenide.open("\\login");
         userClient = new UserClient();
         userModel = UserModel.getRandom();
         UserCredentials creds = UserCredentials.from(userModel);
@@ -32,14 +37,15 @@ public class TestUserProfile {
 
     @After
     public void teardown() {
-        userClient.delete(userModel.getEmail(), bearerToken);
+                userClient.delete(userModel.getEmail(), bearerToken);
+                WebDriverRunner.closeWebDriver();
     }
 
 
     @Test
     @DisplayName("Проверь переход по клику на «Личный кабинет» - Успешно")
     public void successfullyDisplayUserProfile() {
-        final boolean profileTextDisplayed = Selenide.open(LoginPage.URL, LoginPage.class)
+        final boolean profileTextDisplayed = new LoginPage()
                 .userLogin(userModel)
                 .clickProfileLinkUserLogged()
                 .isProfileTextDisplayed();
@@ -49,7 +55,7 @@ public class TestUserProfile {
     @Test
     @DisplayName("Проверь переход по клику на «Конструктор» - Успешно")
     public void successfullyDisplayCreateBurgerTextByClickingTheCreateBurgerLink() {
-        final boolean createBurgerTextDisplayed = Selenide.open(LoginPage.URL, LoginPage.class)
+        final boolean createBurgerTextDisplayed = new LoginPage()
                 .userLogin(userModel)
                 .clickProfileLinkUserLogged()
                 .clickCreateBurger()
@@ -60,7 +66,7 @@ public class TestUserProfile {
     @Test
     @DisplayName("Проверь переход по клику на логотип Stellar Burgers - Успешно")
     public void successfullyDisplayCreateBurgerTextByClickingTheBurgerLogo() {
-        final boolean createBurgerTextDisplayed = Selenide.open(LoginPage.URL, LoginPage.class)
+        final boolean createBurgerTextDisplayed = new LoginPage()
                 .userLogin(userModel)
                 .clickProfileLinkUserLogged()
                 .clickBurgerLogo()
@@ -72,7 +78,7 @@ public class TestUserProfile {
     @Test
     @DisplayName("Проверь выход по кнопке «Выйти» в личном кабинете - Успешно")
     public void successfullyLogoutUser() {
-        final boolean userLoginTextDisplayed = Selenide.open(LoginPage.URL, LoginPage.class)
+        final boolean userLoginTextDisplayed = new LoginPage()
                 .userLogin(userModel)
                 .clickProfileLinkUserLogged()
                 .clickLogoutButton()
