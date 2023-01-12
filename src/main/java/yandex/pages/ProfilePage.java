@@ -11,10 +11,10 @@ import static com.codeborne.selenide.Selenide.$;
 public class ProfilePage {
 
 
-    private SelenideElement profileText = $(By.xpath("//p[text()='В этом разделе вы можете изменить свои персональные данные']"));
-    private SelenideElement createBurger = $(By.xpath("//p[text()='Конструктор']"));
-    private SelenideElement burgerLogo = $(By.xpath("//div[@class='AppHeader_header__logo__2D0X2']/a"));
-    private SelenideElement logoutButton = $(By.xpath("//button[text()='Выход']"));
+    private final SelenideElement profileText = $(By.xpath("//p[text()='В этом разделе вы можете изменить свои персональные данные']"));
+    private final SelenideElement createBurger = $(By.xpath("//p[text()='Конструктор']"));
+    private final SelenideElement burgerLogo = $(By.xpath("//div[@class='AppHeader_header__logo__2D0X2']/a"));
+    private final SelenideElement logoutButton = $(By.xpath("//button[text()='Выход']"));
 
 
     public boolean isProfileTextDisplayed() {

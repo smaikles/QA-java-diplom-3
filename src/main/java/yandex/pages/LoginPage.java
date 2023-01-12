@@ -11,12 +11,12 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class LoginPage {
 
-    SelenideElement loginButton = $(By.xpath("//button[text()='Войти']"));
-    SelenideElement userLoginText = $(By.xpath("//h2[text()='Вход']"));
-    SelenideElement restorePasswordLink = $(By.xpath("//a[text()='Восстановить пароль']"));
-    SelenideElement registerLink = $(By.xpath("//a[text()='Зарегистрироваться']"));
-    SelenideElement emailInputField = $(By.xpath("//label[@class='input__placeholder text noselect text_type_main-default'][text()='Email']/parent::div/input"));
-    SelenideElement passwordInputField = $(By.xpath("//label[@class='input__placeholder text noselect text_type_main-default'][text()='Пароль']/parent::div/input"));
+    private final SelenideElement loginButton = $(By.xpath("//button[text()='Войти']"));
+    private final SelenideElement userLoginText = $(By.xpath("//h2[text()='Вход']"));
+    private final SelenideElement restorePasswordLink = $(By.xpath("//a[text()='Восстановить пароль']"));
+    private final SelenideElement registerLink = $(By.xpath("//a[text()='Зарегистрироваться']"));
+    private final SelenideElement emailInputField = $(By.xpath("//label[@class='input__placeholder text noselect text_type_main-default'][text()='Email']/parent::div/input"));
+    private final SelenideElement passwordInputField = $(By.xpath("//label[@class='input__placeholder text noselect text_type_main-default'][text()='Пароль']/parent::div/input"));
 
     @Step("Нажать кнопку Регистрация")
     public RegisterPage clickRegisterLink() {

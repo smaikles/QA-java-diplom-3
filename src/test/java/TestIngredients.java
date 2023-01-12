@@ -7,14 +7,13 @@ import org.junit.Before;
 import org.junit.Test;
 import yandex.pages.*;
 
+import static com.codeborne.selenide.Condition.visible;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static yandex.config.Init.setSettings;
 
 
 public class TestIngredients {
-
-
-    private final String expected = "tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect";
 
 
     @Before
@@ -31,33 +30,31 @@ public class TestIngredients {
     @Test
     @DisplayName("Проверь, что работают переходы к разделам: «Булки» - Успешно")
     public void checkBunsTabGetsActivatedSuccessfully() {
-        final String actual = new MainPage()
-                .displayAvailableFillings()
-                .displayAvailableSauces()
-                .displayAvailableBuns()
-                .getBunsTabClassValue();
-        assertEquals(expected, actual);
+        MainPage mainPage = new MainPage();
+        mainPage.displayAvailableFillings();
+        mainPage.displayAvailableBuns();
+        String actual = mainPage.getBunsTabClassValue();
+        assertEquals("Булки", actual);
     }
+
 
     @Test
     @DisplayName("Проверь, что работают переходы к разделам: «Соусы» - Успешно")
     public void checkSaucesTabGetsActivatedSuccessfully() {
-        final String actual = new MainPage()
-                .displayAvailableFillings()
-                .displayAvailableBuns()
-                .displayAvailableSauces()
-                .getSaucesTabClassValue();
-        assertEquals(expected, actual);
+        MainPage mainPage = new MainPage();
+        mainPage.displayAvailableFillings();
+        mainPage.displayAvailableSauces();
+        String actual = mainPage.getSaucesTabClassValue();
+        assertEquals("Соусы", actual);
     }
 
     @Test
     @DisplayName("Проверь, что работают переходы к разделам: «Начинки» - Успешно")
     public void checkFillingsTabGetsActivatedSuccessfully() {
-        final String actual = new MainPage()
-                .displayAvailableSauces()
-                .displayAvailableBuns()
-                .displayAvailableFillings()
-                .getFillingsTabClassValue();
-        assertEquals(expected, actual);
+        MainPage mainPage = new MainPage();
+        mainPage.displayAvailableSauces();
+        mainPage.displayAvailableFillings();
+        String actual = mainPage.getFillingsTabClassValue();
+        assertEquals("Начинки", actual);
     }
 }

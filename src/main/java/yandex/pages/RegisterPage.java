@@ -15,12 +15,12 @@ public class RegisterPage {
     final public static String URL = MainPage.URL + "register";
 
 
-    private SelenideElement nameInputField = $(By.xpath("//label[text()='Имя']//following-sibling::input"));
-    private SelenideElement emailInputField = $(By.xpath("//label[text()='Email']//following-sibling::input"));
-    private SelenideElement passwordInputField = $(By.xpath("//input[@type='password']"));
-    private SelenideElement registerButton = $(By.xpath("//button[text()='Зарегистрироваться']"));
-    private SelenideElement incorrectPasswordWarning = $(By.xpath("//p[text()='Некорректный пароль']"));
-    private SelenideElement loginLink = $(By.xpath("//a[text()='Войти']"));
+    private final SelenideElement nameInputField = $(By.xpath("//label[text()='Имя']//following-sibling::input"));
+    private final SelenideElement emailInputField = $(By.xpath("//label[text()='Email']//following-sibling::input"));
+    private final SelenideElement passwordInputField = $(By.xpath("//input[@type='password']"));
+    private final SelenideElement registerButton = $(By.xpath("//button[text()='Зарегистрироваться']"));
+    private final SelenideElement incorrectPasswordWarning = $(By.xpath("//p[text()='Некорректный пароль']"));
+    private final SelenideElement loginLink = $(By.xpath("//a[text()='Войти']"));
 
 
     @Step("Заполнить поле Имя")
