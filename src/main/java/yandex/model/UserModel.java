@@ -21,7 +21,7 @@ public class UserModel {
         this.password = password;
     }
 
-    public static UserModel getRandom () {
+    public static UserModel getRandom() {
         Faker faker = new Faker();
         String email = faker.internet().emailAddress();
         String name = faker.name().fullName();

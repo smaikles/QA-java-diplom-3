@@ -1,13 +1,16 @@
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import yandex.model.*;
 import yandex.pages.*;
+import yandex.steps.UserClient;
 
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.junit.Assert.assertTrue;
+import static yandex.config.Init.setSettings;
 
 
 public class TestUserSignIn {
@@ -18,9 +21,10 @@ public class TestUserSignIn {
 
     @Before
     public void setUp() {
+        setSettings();
         userClient = new UserClient();
         user = UserModel.getRandom();
-        UserCredentials creds = UserCredentials.from(user);
+        UserCredentialsModel creds = UserCredentialsModel.from(user);
         userClient.registerNewUser(user);
         bearerToken = userClient.login(creds)
                 .then().log().all()
@@ -33,6 +37,7 @@ public class TestUserSignIn {
     @After
     public void teardown() {
         userClient.delete(user.getEmail(), bearerToken);
+        WebDriverRunner.closeWebDriver();
     }
 
 

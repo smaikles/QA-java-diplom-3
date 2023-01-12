@@ -1,7 +1,9 @@
-package yandex.model;
+package yandex.steps;
 
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
+import yandex.model.UserCredentialsModel;
+import yandex.model.UserModel;
 
 import static org.apache.http.HttpStatus.SC_ACCEPTED;
 
@@ -20,7 +22,7 @@ public class UserClient extends RestClient {
     }
 
     @Step("Авторизация пользователя")
-    public Response login(UserCredentials creds) {
+    public Response login(UserCredentialsModel creds) {
         return reqSpec
                 .body(creds)
                 .when()

@@ -4,9 +4,9 @@ import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import yandex.config.Init;
 import yandex.model.*;
 import yandex.pages.*;
+import yandex.steps.UserClient;
 
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.junit.Assert.assertTrue;
@@ -25,7 +25,7 @@ public class TestUserProfile {
         Selenide.open("\\login");
         userClient = new UserClient();
         userModel = UserModel.getRandom();
-        UserCredentials creds = UserCredentials.from(userModel);
+        UserCredentialsModel creds = UserCredentialsModel.from(userModel);
         userClient.registerNewUser(userModel);
         bearerToken = userClient.login(creds)
                 .then().log().all()
@@ -37,8 +37,8 @@ public class TestUserProfile {
 
     @After
     public void teardown() {
-                userClient.delete(userModel.getEmail(), bearerToken);
-                WebDriverRunner.closeWebDriver();
+        userClient.delete(userModel.getEmail(), bearerToken);
+        WebDriverRunner.closeWebDriver();
     }
 
 

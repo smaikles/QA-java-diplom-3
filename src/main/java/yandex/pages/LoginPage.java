@@ -11,9 +11,6 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class LoginPage {
 
-    final public static String URL = MainPage.URL + "login";
-
-
     SelenideElement loginButton = $(By.xpath("//button[text()='Войти']"));
     SelenideElement userLoginText = $(By.xpath("//h2[text()='Вход']"));
     SelenideElement restorePasswordLink = $(By.xpath("//a[text()='Восстановить пароль']"));

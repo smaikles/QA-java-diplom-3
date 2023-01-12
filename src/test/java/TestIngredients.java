@@ -1,5 +1,6 @@
 
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
@@ -22,6 +23,11 @@ public class TestIngredients {
         Selenide.open("/");
     }
 
+    @After
+    public void teardown() {
+        WebDriverRunner.closeWebDriver();
+    }
+
     @Test
     @DisplayName("Проверь, что работают переходы к разделам: «Булки» - Успешно")
     public void checkBunsTabGetsActivatedSuccessfully() {
@@ -33,10 +39,10 @@ public class TestIngredients {
         assertEquals(expected, actual);
     }
 
-  //  @Test
+    @Test
     @DisplayName("Проверь, что работают переходы к разделам: «Соусы» - Успешно")
     public void checkSaucesTabGetsActivatedSuccessfully() {
-        final String actual = Selenide.open(MainPage.URL, MainPage.class)
+        final String actual = new MainPage()
                 .displayAvailableFillings()
                 .displayAvailableBuns()
                 .displayAvailableSauces()
@@ -44,10 +50,10 @@ public class TestIngredients {
         assertEquals(expected, actual);
     }
 
- //   @Test
+    @Test
     @DisplayName("Проверь, что работают переходы к разделам: «Начинки» - Успешно")
     public void checkFillingsTabGetsActivatedSuccessfully() {
-        final String actual = Selenide.open(MainPage.URL, MainPage.class)
+        final String actual = new MainPage()
                 .displayAvailableSauces()
                 .displayAvailableBuns()
                 .displayAvailableFillings()

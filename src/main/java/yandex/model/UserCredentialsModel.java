@@ -6,17 +6,17 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class UserCredentials {
+public class UserCredentialsModel {
     private String email;
     private String password;
 
-    public UserCredentials(UserModel user){
+    public UserCredentialsModel(UserModel user) {
         this.email = user.getEmail();
         this.password = user.getPassword();
     }
 
-    public static UserCredentials from (UserModel user){
-        return new UserCredentials(user);
+    public static UserCredentialsModel from(UserModel user) {
+        return new UserCredentialsModel(user);
     }
 
 }

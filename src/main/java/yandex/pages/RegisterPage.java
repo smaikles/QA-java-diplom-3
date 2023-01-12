@@ -23,35 +23,30 @@ public class RegisterPage {
     private SelenideElement loginLink = $(By.xpath("//a[text()='Войти']"));
 
 
-    // метод заполнения поля ввода имени
     @Step("Заполнить поле Имя")
     public RegisterPage inputName(String name) {
         nameInputField.sendKeys(name);
         return this;
     }
 
-    // метод заполнения поля ввода email
     @Step("Заполнить поле Email")
     public RegisterPage inputEmail(String email) {
         emailInputField.sendKeys(email);
         return this;
     }
 
-    // метод заполнения поля ввода пароля
     @Step("Заполнить поле Пароль")
     public RegisterPage inputPassword(String password) {
         passwordInputField.sendKeys(password);
         return this;
     }
 
-    // Метод клика по кнопке <Зарегистрироваться>
     @Step("Нажать кнопку Регистрация")
     public LoginPage clickRegisterButton() {
         registerButton.click();
         return Selenide.page(LoginPage.class);
     }
 
-    // метод регистрации нового пользователя
     @Step("Заполнить форму регистрации")
     public LoginPage registerNewUser(UserModel user) {
         inputName(user.getName());
@@ -61,7 +56,6 @@ public class RegisterPage {
         return Selenide.page(LoginPage.class);
     }
 
-    // метод регистрации нового пользователя с неверным паролем
     @Step("Заполнить форму регистрации не валидными данными")
     public RegisterPage registerNewUserWithIncorrectPass(UserModel user) {
         inputName(user.getName());
@@ -71,14 +65,12 @@ public class RegisterPage {
         return this;
     }
 
-    // Метод клика по ссылке <Войти>
     @Step("Нажать кнопку Войти")
     public LoginPage clickLoginLink() {
         loginLink.click();
         return Selenide.page(LoginPage.class);
     }
 
-    // метод проверки видимости элемента <Некорректный пароль>
     public boolean isIncorrectPassDisplayed() {
         return incorrectPasswordWarning.shouldBe(visible).isDisplayed();
     }

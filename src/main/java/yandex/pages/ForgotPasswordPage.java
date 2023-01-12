@@ -10,7 +10,6 @@ import static com.codeborne.selenide.Selenide.$;
 public class ForgotPasswordPage {
     public static final String URL = MainPage.URL + "forgot-password";
 
-
     private SelenideElement loginLink = $(By.xpath("//a[@class='Auth_link__1fOlj']"));
 
     @Step("Кликнуть на кнопку Войти на странице Восстановления пароля")

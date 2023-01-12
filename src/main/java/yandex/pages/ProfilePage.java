@@ -10,8 +10,6 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class ProfilePage {
 
-    public static final String URL = MainPage.URL + "profile";
-
 
     private SelenideElement profileText = $(By.xpath("//p[text()='В этом разделе вы можете изменить свои персональные данные']"));
     private SelenideElement createBurger = $(By.xpath("//p[text()='Конструктор']"));
@@ -19,12 +17,11 @@ public class ProfilePage {
     private SelenideElement logoutButton = $(By.xpath("//button[text()='Выход']"));
 
 
-    // Метод проверки видимости текстового элемента <В этом разделе вы можете изменить свои персональные данные>
     public boolean isProfileTextDisplayed() {
         return profileText.shouldBe(visible).isDisplayed();
     }
 
-    // Метод клика по элементу <Конструктор>
+
     @Step("Нажать Конструктор")
     public MainPage clickCreateBurger() {
         createBurger.click();
@@ -32,7 +29,6 @@ public class ProfilePage {
     }
 
 
-    // Метод клика по элементу <Логотип>
     @Step("Нажать на элемент логотип")
     public MainPage clickBurgerLogo() {
         burgerLogo.click();
@@ -40,7 +36,6 @@ public class ProfilePage {
     }
 
 
-    // Метод клика по кнопке <Выход>
     @Step("Нажать Выход")
     public LoginPage clickLogoutButton() {
         logoutButton.click();
